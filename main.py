@@ -1,5 +1,6 @@
 import discord
 import requests
+import api_test
 import json
 from decouple import config
 
@@ -18,8 +19,9 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 
-	if message.content.startswith("$hello"):
-		await message.channel.send("Hello!")
+	if message.content.startswith("!"):
+		await message.channel.send(api_test.main())
+		print("Request served")
 
 
 client.run(config("Token"))
